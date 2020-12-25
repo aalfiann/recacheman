@@ -1,0 +1,45 @@
+{
+  "name": "recacheman",
+  "version": "2.2.1",
+  "description": "Small and efficient cache provider for Node.JS with In-memory, Redis and MongoDB engines",
+  "author": "Jonathan Brumley <cayasso@gmail.com>",
+  "main": "./dist/index",
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "build": "babel lib -d dist",
+    "test": "npm run build && nyc --reporter=html --reporter=text mocha --require @babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aalfiann/recacheman.git"
+  },
+  "keywords": [
+    "cache",
+    "file",
+    "redis",
+    "memory",
+    "mongodb",
+    "caching",
+    "mongo",
+    "store",
+    "ttl",
+    "middleware",
+    "bucket"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "bluebird": "^3.1.5",
+    "coveralls": "^3.1.0",
+    "mocha": "^8.2.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.1.0"
+  },
+  "dependencies": {
+    "ms": "^2.1.3",
+    "recacheman-memory": "^1.1.0"
+  }
+}
