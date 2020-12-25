@@ -1,6 +1,6 @@
 {
   "name": "recacheman",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Small and efficient cache provider for Node.JS with In-memory, Redis and MongoDB engines",
   "author": "Jonathan Brumley <cayasso@gmail.com>",
   "main": "./dist/index",
@@ -32,6 +32,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/register": "^7.12.10",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "bluebird": "^3.1.5",
     "coveralls": "^3.1.0",
     "mocha": "^8.2.1",

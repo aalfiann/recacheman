@@ -515,3 +515,4 @@ var Cacheman = /*#__PURE__*/function () {
 
 exports["default"] = Cacheman;
 Cacheman.engines = engines;
+module.exports = exports.default;
