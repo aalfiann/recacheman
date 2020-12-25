@@ -309,10 +309,10 @@ $ make test
 
 ## Supported engines
 
- * [cacheman-memory](https://github.com/cayasso/cacheman-memory)
- * [cacheman-redis](https://github.com/cayasso/cacheman-redis)
- * [cacheman-mongo](https://github.com/cayasso/cacheman-mongo)
- * [cacheman-file](https://github.com/taronfoxworth/cacheman-file)
+ * [recacheman-memory](https://github.com/aalfiann/recacheman-memory)
+ * [recacheman-redis](https://github.com/aalfiann/recacheman-redis)
+ * [recacheman-mongo](https://github.com/aalfiann/recacheman-mongo)
+ * [recacheman-file](https://github.com/aalfiann/recacheman-file)
 
 ## Credits
 
