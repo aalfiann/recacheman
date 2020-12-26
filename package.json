@@ -1,6 +1,6 @@
 {
   "name": "recacheman",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Small and efficient cache provider for Node.JS with In-memory, Redis and MongoDB engines",
   "author": "Jonathan Brumley <cayasso@gmail.com>",
   "main": "./dist/index",
