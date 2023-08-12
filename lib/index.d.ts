@@ -48,7 +48,7 @@ export default class Cacheman {
      * @param {Function} fn
      * @api private
      */
-    run(key: string, data: any, ttl: string|number, fn: Function): this;
+    run(key: string, data: any, ttl?: string|number, fn?: Function): this;
     /**
      * Set an entry.
      *
@@ -59,7 +59,7 @@ export default class Cacheman {
      * @return {Cacheman} this
      * @api public
      */
-    cache(key: string, data: any, ttl: string|number, fn: Function): this;
+    cache(key: string, data: any, ttl?: string|number, fn?: Function): this;
     /**
      * Get an entry.
      *
@@ -68,7 +68,7 @@ export default class Cacheman {
      * @return {Cacheman} this
      * @api public
      */
-    get(key: string, fn: Function): this;
+    get(key: string, fn?: Function): this;
     /**
      * Set an entry.
      *
@@ -79,7 +79,7 @@ export default class Cacheman {
      * @return {Cacheman} this
      * @api public
      */
-    set(key: string, data: any, ttl: string|number, fn: Function): this;
+    set(key: string, data: any, ttl?: string|number, fn?: Function): this;
     /**
      * Delete an entry.
      *
@@ -88,7 +88,7 @@ export default class Cacheman {
      * @return {Cacheman} this
      * @api public
      */
-    del(key: string, fn: Function): this;
+    del(key: string, fn?: Function): this;
     /**
      * Clear all entries.
      *
@@ -97,7 +97,7 @@ export default class Cacheman {
      * @return {Cacheman} this
      * @api public
      */
-    clear(fn: Function): this;
+    clear(fn?: Function): this;
     /**
      * Wraps a function in cache. I.e., the first time the function is run,
      * its results are stored in cache so subsequent calls retrieve from cache
@@ -109,6 +109,6 @@ export default class Cacheman {
      * @param {Function} [fn]
      * @api public
      */
-    wrap(key: string, work: any, ttl: string|number, fn: Function): this;
+    wrap(key: string, work: any, ttl?: string|number, fn?: Function): this;
 }
 
