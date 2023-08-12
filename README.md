@@ -1,7 +1,7 @@
 > This is a fork version of [cacheman](https://github.com/cayasso/cacheman) with following differences :
-- Minimum NodeJS 10
+- Minimum NodeJS 12
 - Removed old libraries
-- Fixing all vulnerables
+- Typescript support (experimental)
 - Up to date
 
 # recacheman

@@ -5,3 +5,4 @@ node
 tmp
 .nyc_output
 coverage
+package-lock.json
