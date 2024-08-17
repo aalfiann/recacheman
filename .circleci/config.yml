@@ -11,9 +11,6 @@ jobs:
       - image: cimg/node:16.19.0   # Primary execution image
     steps:
       - checkout
-      - run:
-          name: Update npm
-          command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
