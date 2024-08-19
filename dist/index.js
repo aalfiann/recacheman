@@ -130,13 +130,13 @@ var Cacheman = /*#__PURE__*/function () {
       ttl = Math.round((0, _ms["default"])(ttl) / 1000);
     }
     prefix = [prefix, name || 'cache', ''].join(delimiter);
-    this.options = _objectSpread(_objectSpread({}, options), {}, {
+    this.options = _objectSpread({
       Promise: _Promise,
       delimiter: delimiter,
       prefix: prefix,
       ttl: ttl,
       count: 1000
-    });
+    }, options);
     this._prefix = prefix;
     this._ttl = ttl;
     this._fns = [];
