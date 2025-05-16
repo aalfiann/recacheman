@@ -1,8 +1,4 @@
-> This is a fork version of [cacheman](https://github.com/cayasso/cacheman) with following differences :
-- Minimum NodeJS 12
-- Removed old libraries
-- Typescript support (experimental)
-- Up to date
+> This is a fork version of [cacheman](https://github.com/cayasso/cacheman)
 
 # recacheman
 
@@ -16,6 +12,12 @@
 ![NPM download total](https://img.shields.io/npm/dt/recacheman.svg)  
 
 Small and efficient cache provider for Node.JS with In-memory, File, Redis and MongoDB engines.
+
+| Version | Node.JS |
+|---|---|
+| 2.2.x | 10, 12 |
+| 2.3.x | 12, 14, 16, 18, 20 |
+| 3.x.x | 20, 22 |
 
 ## Installation
 
@@ -300,10 +302,22 @@ cache.wrap('foo', '45s',
   });
 ```
 
+## Promises
+
+This library supports both native Promises and callback-style usage.
+If you want to use Bluebird (or any custom Promise library), pass it in `options.Promise`:
+
+```js
+const Bluebird = require('bluebird');
+const Cacheman = require('recacheman');
+
+const cache = new Cacheman('mycache', { Promise: Bluebird });
+```
+
 ## Run tests
 
 ``` bash
-$ make test
+$ npm test
 ```
 
 ## Supported engines
@@ -321,7 +335,8 @@ This library was inspired by the [hilmi](https://github.com/eknkc/hilmi) project
 
 (The MIT License)
 
-Copyright (c) 2013 Jonathan Brumley &lt;cayasso@gmail.com&gt;
+Copyright (c) 2013 Jonathan Brumley &lt;cayasso@gmail.com&gt;,  
+M Abd Aziz Alfian &lt;aalfiann@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

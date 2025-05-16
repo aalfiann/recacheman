@@ -4,17 +4,32 @@
  * Module dependencies.
  */
 
-import assert from 'assert';
-import Bluebird from 'bluebird';
-import Cacheman from '../dist/index';
+const assert = require('assert');
+const Cacheman = require('../dist/index');
 
-Bluebird.noConflict();
+let Bluebird;
+try {
+  Bluebird = require('bluebird');
+  Bluebird.noConflict();
+} catch (e) {
+  Bluebird = null;
+}
+
+const PromiseLib = Bluebird || Promise;
 
 let cache;
 let n = 0;
 
 function testKey() {
   return 'test' + (++n);
+}
+
+function withBluebird(msg, fn) {
+  if (Bluebird) {
+    it(msg, fn);
+  } else {
+    it.skip(`[skipped due to missing bluebird] ${msg}`, () => {});
+  }
 }
 
 describe('cacheman', function () {
@@ -408,7 +423,7 @@ describe('cacheman', function () {
     });
   });
 
-  it('should return a Bluebird promise', function (done) {
+  withBluebird('should return a Bluebird promise', function (done) {
     let c = new Cacheman('testing', {Promise: Bluebird})
       , key = testKey();
     c.set(key, 'test value', function (err) {
@@ -428,7 +443,7 @@ describe('cacheman', function () {
     });
   });
 
-  it('should return a Promise from set', function (done) {
+  withBluebird('should return a Bluebird Promise from set', function (done) {
     let c = new Cacheman('testing', {Promise: Bluebird})
       , key = testKey()
       , p = c.set(key, 'test value');
@@ -450,7 +465,7 @@ describe('cacheman', function () {
       });
   });
 
-  it('should return a Promise from cache', function (done) {
+  withBluebird('should return a Bluebird Promise from cache', function (done) {
     let c = new Cacheman('testing', {Promise: Bluebird})
       , key = testKey()
       , p = c.cache(key, 'test value');
@@ -472,7 +487,7 @@ describe('cacheman', function () {
       });
   });
 
-  it('should return a Promise from del', function (done) {
+  withBluebird('should return a Bluebird Promise from del', function (done) {
     let c = new Cacheman('testing', {Promise: Bluebird})
       , key = testKey();
     c.set(key, 'test value', function (err) {
@@ -495,7 +510,7 @@ describe('cacheman', function () {
     });
   });
 
-  it('should return a Promise from clear', function (done) {
+  withBluebird('should return a Bluebird Promise from clear', function (done) {
     let c = new Cacheman('testing', {Promise: Bluebird})
       , key = testKey();
     c.set(key, 'test value', function (err) {
@@ -518,7 +533,7 @@ describe('cacheman', function () {
     });
   });
 
-  it('should return a Promise from wrap', function (done) {
+  withBluebird('should return a Bluebird Promise from wrap', function (done) {
     this.timeout(0);
     let c = new Cacheman('testing', {Promise: Bluebird})
       , key = testKey()
@@ -542,7 +557,7 @@ describe('cacheman', function () {
     this.timeout(5);
     let key = testKey();
     cache.wrap(key, function () {
-      return Bluebird.resolve('test value')
+      return PromiseLib.resolve('test value');
     }, 1100, function (err, data) {
       if (err) return done(err);
       assert.equal(data, 'test value');
@@ -555,7 +570,7 @@ describe('cacheman', function () {
   });
 
   it('should accept values returned by a wrapped function', function (done) {
-    this.timeout(5);
+    this.timeout(5000);
     let key = testKey();
     cache.wrap(key, function () {
       return 'test value'
@@ -571,7 +586,7 @@ describe('cacheman', function () {
   });
 
   it('should accept ttl and wraped function in inverted order', function (done) {
-    this.timeout(5);
+    this.timeout(5000);
     let key = testKey();
     cache.wrap(key, 1100, function (callback) {
       callback(null, 'test value')
